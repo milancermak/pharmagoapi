@@ -30,7 +30,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path("^/v1/", include(router.urls)),
+    path("", include(router.urls)),
     path("admin", admin.site.urls),
     url(
         r"^swagger(?P<format>\.json|\.yaml)$",
@@ -46,4 +46,3 @@ urlpatterns = [
         r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
     ),
 ]
-
