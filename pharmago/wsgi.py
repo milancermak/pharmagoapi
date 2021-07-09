@@ -8,9 +8,11 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 """
 
 import os
+import sys
 
 from django.core.wsgi import get_wsgi_application
 
+sys.path.append('/opt/bitnami/projects/pharmagoapi')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pharmago.settings')
 
 application = get_wsgi_application()
