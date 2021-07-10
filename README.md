@@ -37,3 +37,9 @@ sudo -u postgres bash -c "createdb pharmago"
 #!shell
 python manage.py migrate
 ```
+
+
+### Bitnami dependency locations
+
+bitnami@ip-172-26-3-232:/opt/bitnami/python/lib/python3.8/site-packages$ 
+sudo pip install -r /opt/bitnami/projects/pharmagoapi/requirements.txt -t .
