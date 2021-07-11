@@ -3,6 +3,7 @@ from __future__ import annotations
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
+from django.views.generic.base import RedirectView
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -30,8 +31,8 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path("", include(router.urls)),
-    path("admin", admin.site.urls),
+    path("^v1", include(router.urls)),
+    url("^$", RedirectView.as_view(pattern_name="schema-swagger-ui")),
     url(
         r"^swagger(?P<format>\.json|\.yaml)$",
         schema_view.without_ui(cache_timeout=0),
@@ -45,4 +46,6 @@ urlpatterns = [
     url(
         r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
     ),
+    path("admin", admin.site.urls),
+
 ]
